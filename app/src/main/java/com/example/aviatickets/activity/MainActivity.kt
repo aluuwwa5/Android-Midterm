@@ -1,14 +1,16 @@
 package com.example.aviatickets.activity
 
+import OfferListFragment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.aviatickets.R
+import com.example.aviatickets.adapter.OfferListAdapter
 import com.example.aviatickets.databinding.ActivityMainBinding
-import com.example.aviatickets.fragment.OfferListFragment
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
+    private var adapter: OfferListAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -16,8 +18,9 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.fragment_container_view, OfferListFragment.newInstance())
+            .add(R.id.fragment_container_view, OfferListFragment())
             .commit()
 
     }
+
 }

@@ -2,24 +2,28 @@ package com.example.aviatickets.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.aviatickets.R
 import com.example.aviatickets.databinding.ItemOfferBinding
+import com.example.aviatickets.model.OfferItemCallBack
 import com.example.aviatickets.model.entity.Offer
 
-class OfferListAdapter : RecyclerView.Adapter<OfferListAdapter.ViewHolder>() {
-
+class OfferListAdapter : ListAdapter<Offer, OfferListAdapter.ViewHolder>(OfferItemCallBack()) {
+    companion object {
+        private const val OFFER_ADAPTER_TAG = "OfferListAdapter"
+    }
     private val items: ArrayList<Offer> = arrayListOf()
 
-    fun setItems(offerList: List<Offer>) {
-        items.clear()
-        items.addAll(offerList)
-        notifyDataSetChanged()
-
-        /**
-         * think about recycler view optimization using diff.util
-         */
-    }
+//    fun setItems(offerList: List<Offer>) {
+//        items.clear()
+//        items.addAll(offerList)
+//        notifyDataSetChanged()
+//
+//        /**
+//         * think about recycler view optimization using diff.util
+//         */
+//    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
